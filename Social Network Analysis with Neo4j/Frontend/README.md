@@ -1,69 +1,181 @@
-# Welcome to your Lovable project
+# Social Network Analyzer - Frontend
 
-## Project info
+Welcome to the **Frontend** of the **Social Network Analyzer** project! This React-based frontend provides a modern, interactive user interface for managing and visualizing a social network. It connects to a Flask backend to interact with a Neo4j graph database, enabling you to add people, create friendships, and visualize the social network.
 
-**URL**: https://lovable.dev/projects/2f528f7f-f7bf-403e-8c49-c59a1050490e
+---
 
-## How can I edit this code?
+## **Features**
+- **Add People**: Add individuals to the social network with attributes like name, age, location, and interests.
+- **Add Friendships**: Create connections between people in the network.
+- **Visualize Network**: View an interactive graph of the social network, showing people, their locations, and interests.
+- **Responsive Design**: Built with modern UI components and optimized for all screen sizes.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## **Table of Contents**
+1. [Installation Guide](#installation-guide)
+2. [Folder Structure](#folder-structure)
+3. [Environment Variables](#environment-variables)
+4. [Running the Application](#running-the-application)
+5. [Connecting to the Backend](#connecting-to-the-backend)
+6. [Contributing](#contributing)
+7. [License](#license)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2f528f7f-f7bf-403e-8c49-c59a1050490e) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## **Installation Guide**
 
-**Use your preferred IDE**
+### **Prerequisites**
+- Node.js 16+
+- npm or yarn
+- Flask backend (see [Backend README](../backend/README.md) for setup instructions)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### **Step 1: Clone the Repository**
+Clone the repository to your local machine:
+```bash
+git clone [https://github.com/your-username/social-network-analyzer.git](https://github.com/Neelanjan-chakraborty/BlackCoffer.git)
+cd Social Network Analysis with Neo4j/Frontend
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### **Step 2: Install Dependencies**
+Install the required dependencies using npm or yarn:
+```bash
+npm install
+```
+or
+```bash
+yarn install
+```
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### **Step 3: Configure Environment Variables**
+Create a `.env` file in the `frontend` folder and add the following environment variables:
+```
+REACT_APP_API_URL=https://your-backend.onrender.com
+```
+Replace `https://your-backend.onrender.com` with the URL of your deployed Flask backend.
 
-## What technologies are used for this project?
+---
 
-This project is built with .
+### **Step 4: Run the Application**
+Start the development server:
+```bash
+npm start
+```
+or
+```bash
+yarn start
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The application will be available at `http://localhost:3000`.
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/2f528f7f-f7bf-403e-8c49-c59a1050490e) and click on Share -> Publish.
+## **Folder Structure**
+```
+frontend/
+├── public/                  # Static assets
+│   ├── index.html           # Main HTML file
+│   └── ...                  # Other static files
+├── src/                     # Source code
+│   ├── components/          # Reusable UI components
+│   ├── pages/               # Application pages
+│   ├── App.js               # Main application component
+│   ├── index.js             # Entry point
+│   └── ...                  # Other source files
+├── package.json             # Project dependencies
+├── .env                     # Environment variables
+└── README.md                # Frontend documentation
+```
 
-## I want to use a custom domain - is that possible?
+---
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+## **Environment Variables**
+| Variable Name         | Description                                | Example Value                          |
+|-----------------------|--------------------------------------------|----------------------------------------|
+| `REACT_APP_API_URL`   | URL of the Flask backend                   | `https://your-backend.onrender.com`    |
+
+---
+
+## **Running the Application**
+1. **Development Mode**:
+   - Run `npm start` or `yarn start`.
+   - The app will be available at `http://localhost:3000`.
+
+2. **Production Build**:
+   - Generate a production build:
+     ```bash
+     npm run build
+     ```
+   - Serve the build folder using a static server (e.g., `serve`):
+     ```bash
+     npm install -g serve
+     serve -s build
+     ```
+
+---
+
+## **Connecting to the Backend**
+The frontend communicates with the Flask backend using the `REACT_APP_API_URL` environment variable. Ensure the backend is running and accessible at the specified URL.
+
+### **Example API Calls**
+1. **Add a Person**:
+   ```javascript
+   fetch(`${process.env.REACT_APP_API_URL}/api/add_person`, {
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json',
+     },
+     body: JSON.stringify({
+       name: 'Alice',
+       age: 30,
+       location: 'New York',
+       interests: ['music', 'travel'],
+     }),
+   });
+   ```
+
+2. **Add a Friendship**:
+   ```javascript
+   fetch(`${process.env.REACT_APP_API_URL}/api/add_friendship`, {
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json',
+     },
+     body: JSON.stringify({
+       person1: 'Alice',
+       person2: 'Bob',
+     }),
+   });
+   ```
+
+3. **Visualize Network**:
+   ```javascript
+   fetch(`${process.env.REACT_APP_API_URL}/api/visualize`)
+     .then((response) => response.text())
+     .then((html) => {
+       // Render the HTML in an iframe
+     });
+   ```
+
+---
+
+## **Contributing**
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Submit a pull request with a detailed description of your changes.
+
+---
+
+## **License**
+This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
+
+---
+
+Enjoy building and visualizing your social network! 🚀
