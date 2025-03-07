@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 275 75% 55%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-white/10 selection:text-white;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    background-color: #0d0d12;
+    background-image: radial-gradient(
+      circle at center,
+      rgba(39, 39, 42, 0.5) 0%,
+      rgba(24, 24, 27, 0.8) 70%,
+      rgba(9, 9, 11, 1) 100%
+    );
+    background-size: 100% 100%;
+    background-attachment: fixed;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .glass-morphism {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-glass;
+  }
+  
+  .neo-blur {
+    @apply backdrop-blur-2xl bg-black/40 border border-white/10;
+  }
+  
+  .neon-border {
+    position: relative;
+  }
+  
+  .neon-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(to right, #1EAEDB, #8B5CF6, #D946EF, #8B5CF6, #1EAEDB);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: gradient-flow 6s ease infinite;
+    background-size: 200% 200%;
+  }
+  
+  .neon-text {
+    @apply text-transparent bg-clip-text bg-neon-glow animate-gradient-flow bg-[length:200%_200%];
+  }
+
+  .subtle-grid {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  .button-hover-effect {
+    @apply relative overflow-hidden;
+  }
+  
+  .button-hover-effect::after {
+    @apply content-[''] absolute inset-0 rounded-lg scale-0 opacity-0 transition-all duration-500 ease-in-out;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+  }
+  
+  .button-hover-effect:hover::after {
+    @apply scale-150 opacity-100;
+  }
+  
+  .ripple {
+    @apply relative overflow-hidden;
+  }
+
+  .ripple::after {
+    @apply content-[''] absolute w-[100px] h-[100px] bg-white/30 rounded-full -translate-x-1/2 -translate-y-1/2 animate-ripple;
+  }
+  
+  .blurred-dot-pattern {
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px
+    );
+    background-size: 20px 20px;
+  }
+
+  .bg-gradient-radial {
+    background-color: #0a0a0f;
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      rgba(139, 92, 246, 0.15) 0%,
+      rgba(14, 165, 233, 0.15) 25%,
+      rgba(217, 70, 239, 0.15) 50%,
+      rgba(9, 9, 11, 0.6) 100%
+    );
+  }
+}
+
+/* Custom animations for page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Auth form styles */
+.auth-input {
+  @apply bg-secondary/50 border-none ring-1 ring-white/10 focus:ring-white/30 backdrop-blur-md text-white placeholder:text-white/50;
+}
+
+/* Chat styles */
+.chat-container {
+  @apply rounded-xl glass-morphism overflow-hidden;
+}
+
+.message-bubble {
+  @apply rounded-xl p-3 mb-2 max-w-[80%];
+}
+
+.message-bubble.sent {
+  @apply bg-purple-pink-gradient ml-auto;
+}
+
+.message-bubble.received {
+  @apply bg-cyan-blue-gradient;
+}
