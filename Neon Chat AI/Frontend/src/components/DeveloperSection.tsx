@@ -109,13 +109,13 @@ const DeveloperSection = () => {
               </div>
             </div>
             
-            <div className="mt-12">
+            {/* <div className="mt-12">
               <h4 className="text-xl font-semibold mb-4 flex items-center">
                 <span className="w-4 h-4 bg-accent rounded-sm mr-2"></span>
                 Experience
-              </h4>
+              </h4> */}
               
-              <div className="space-y-8">
+              {/* <div className="space-y-8">
                 {experiences.map((exp, index) => (
                   <div key={index} className="glass-morphism rounded-xl p-6 border border-white/10">
                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-3">
@@ -149,7 +149,7 @@ const DeveloperSection = () => {
                     </div>
                   </div>
                 ))}
-              </div>
+              </div> */}
             </div>
             
             <div className="mt-12">
