@@ -78,28 +78,28 @@ const DeveloperSection = () => {
                     <span>Portfolio</span>
                   </a>
                   <a 
-                    href="#"
+                    href="https://neelanjanchakraborty.in/"
                     className="button-hover-effect flex items-center gap-2 py-2 px-4 rounded-lg glass-morphism hover:shadow-neon-purple transition-all duration-300"
                   >
                     <Linkedin size={16} />
                     <span>LinkedIn</span>
                   </a>
                   <a 
-                    href="#"
+                    href="https://linkedin.com/in/neelanjanchakraborty"
                     className="button-hover-effect flex items-center gap-2 py-2 px-4 rounded-lg glass-morphism hover:shadow-neon-pink transition-all duration-300"
                   >
                     <Github size={16} />
                     <span>GitHub</span>
                   </a>
                   <a 
-                    href="#"
+                    href="https://github.com/Neelanjan-chakraborty"
                     className="button-hover-effect flex items-center gap-2 py-2 px-4 rounded-lg glass-morphism hover:shadow-neon-blue transition-all duration-300"
                   >
                     <Mail size={16} />
                     <span>Contact</span>
                   </a>
                   <a 
-                    href="#"
+                    href="https://wa.me/918617352997"
                     className="button-hover-effect flex items-center gap-2 py-2 px-4 rounded-lg bg-accent hover:bg-accent/90 text-white transition-all duration-300"
                   >
                     <Download size={16} />
@@ -113,8 +113,8 @@ const DeveloperSection = () => {
               <h4 className="text-xl font-semibold mb-4 flex items-center">
                 <span className="w-4 h-4 bg-accent rounded-sm mr-2"></span>
                 Experience
-              </h4> */}
-              
+              </h4>
+               */}
               {/* <div className="space-y-8">
                 {experiences.map((exp, index) => (
                   <div key={index} className="glass-morphism rounded-xl p-6 border border-white/10">
@@ -150,9 +150,9 @@ const DeveloperSection = () => {
                   </div>
                 ))}
               </div> */}
-            </div>
+            {/* </div> */}
             
-            <div className="mt-12">
+            {/* <div className="mt-12">
               <h4 className="text-xl font-semibold mb-4 flex items-center">
                 <span className="w-4 h-4 bg-primary rounded-sm mr-2"></span>
                 Skills
@@ -168,7 +168,7 @@ const DeveloperSection = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
