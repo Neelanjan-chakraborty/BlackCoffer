@@ -42,7 +42,11 @@ const HeroSection = () => {
                 Get Started Free
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
-              <button className="button-hover-effect bg-transparent hover:bg-white/5 text-white border border-white/20 font-medium py-3 px-8 rounded-xl transition-all duration-300">
+              <button className="button-hover-effect bg-transparent hover:bg-white/5 text-white border border-white/20 font-medium py-3 px-8 rounded-xl transition-all duration-300"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href='https://www.loom.com/share/a9e26405253e484484ec684f2d27912f?sid=371a979e-5aeb-459e-a179-9e587c02c360';
+                }}>
                 View Demo
               </button>
             </div>
